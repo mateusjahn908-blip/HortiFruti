@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hortifruti | Ofertas</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+
+        <div class="container header-content">
+
+            <a href="#" class="logo">
+                Horti<span>fruti</span>
+            </a>
+
+            <div class="location">
+                <span class="location-icon">📍</span>
+
+                <div>
+                    <small>Entregar em</small>
+                    <strong>Escolha sua localização</strong>
+                </div>
+            </div>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Busque por produtos..."
+                >
+
+                <button id="searchButton">
+                    🔍
+                </button>
+
+            </div>
+
+            <button class="cart-button" id="cartButton">
+
+                🛒
+
+                <span>Carrinho</span>
+
+                <strong id="cartCount">0</strong>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- BANNER PRINCIPAL -->
+    <section class="hero">
+
+        <div class="container hero-content">
+
+            <div class="hero-text">
+
+                <span class="small-title">
+                    FRESQUINHO PARA VOCÊ
+                </span>
+
+                <h1>
+                    Ofertas que deixam
+                    <span>seu dia mais leve.</span>
+                </h1>
+
+                <p>
+                    Produtos selecionados, preços especiais
+                    e tudo o que você precisa para sua casa.
+                </p>
+
+                <a href="#ofertas" class="main-button">
+                    Ver ofertas
+                </a>
+
+            </div>
+
+
+            <div class="offer-circle">
+
+                <small>OFERTAS</small>
+
+                <strong>
+                    DA SEMANA
+                </strong>
+
+                <span>
+                    até 30% OFF
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- OFERTAS -->
+    <section class="section" id="ofertas">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        APROVEITE
+                    </span>
+
+                    <h2>
+                        Ofertas da semana
+                    </h2>
+
+                </div>
+
+                <button class="outline-button">
+                    Ver todas
+                </button>
+
+            </div>
+
+
+            <div
+                class="products-grid"
+                id="offersGrid"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATÁLOGO -->
+    <section class="catalog">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        ENCONTRE O QUE PRECISA
+                    </span>
+
+                    <h2>
+                        Catálogo
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTROS -->
+            <div class="filters">
+
+                <button
+                    class="filter active"
+                    data-category="Todos"
+                >
+                    Todos
+                </button>
+
+                <button
+                    class="filter"
+                    data-category="Frutas"
+                >
+                    Frutas
+                </button>
+
+                <button
+                    class="filter"
+                    data-category="Verduras"
+                >
+                    Verduras
+                </button>
+
+                <button
+                    class="filter"
+                    data-category="Legumes"
+                >
+                    Legumes
+                </button>
+
+                <button
+                    class="filter"
+                    data-category="Mercearia"
+                >
+                    Mercearia
+                </button>
+
+                <button
+                    class="filter"
+                    data-category="Bebidas"
+                >
+                    Bebidas
+                </button>
+
+            </div>
+
+
+            <div
+                class="products-grid"
+                id="catalogGrid"
+            ></div>
+
+
+            <p
+                class="empty-message"
+                id="emptyMessage"
+            >
+                Nenhum produto encontrado.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENSAGEM -->
+    <div
+        class="toast"
+        id="toast"
+    >
+        Produto adicionado!
+    </div>
+
+
+    <!-- CARRINHO -->
+    <div
+        class="modal"
+        id="cartModal"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="close"
+                id="closeModal"
+            >
+                ×
+            </button>
+
+            <span class="section-label">
+                SEU PEDIDO
+            </span>
+
+            <h2>
+                Carrinho
+            </h2>
+
+            <div id="cartItems"></div>
+
+            <div class="cart-total">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="cartTotal">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+            <button class="main-button checkout">
+                Continuar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
