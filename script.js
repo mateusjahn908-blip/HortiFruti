@@ -9,13 +9,12 @@ const produtos = [
     { id: "Pimentao", nome: "Pimentão", categoria: "Legumes", preco: 7.49, icone: '<img src="https://s2.glbimg.com/DV0BJoVaIEax1qzAhCWwNWOk158=/620x466/smart/e.glbimg.com/og/ed/f/original/2021/04/14/como-plantar-pimentao-em-casa-getty-images-1.jpg" alt="Pimentão">', oferta: false },
     { id: "Cenoura", nome: "Cenoura", categoria: "Legumes", preco: 5.99, icone: '<img src="https://images.unsplash.com/photo-1447175008436-054170c2e979?auto=format&fit=crop&w=600&q=80" alt="Cenoura">', oferta: false },
     { id: "Limao", nome: "Limão", categoria: "Frutas", preco: 4.79, icone: '<img src="https://img.drogaraia.com.br/uploads/2024/04/adobestock_8188882_easy-resize-c.jpg" alt="Limão">', oferta: false },
-    { id: "PaoDeForma", nome: "Pão de Forma", categoria: "Mercearia", preco: 6.99, icone: '<img src="https://images.unsplash.com/photo-1604908177520-1f3c5b8f9d4e?auto=format&fit=crop&w=600&q=80" alt="Pão de Forma">', oferta: false },
-    { id: "PaoDeSal", nome: "Pão de Sal", categoria: "Mercearia", preco: 5.49, icone: '<img src="https://images.unsplash.com/photo-1604908177520-1f3c5b8f9d4e?auto=format&fit=crop&w=600&q=80" alt="Pão de Sal">', oferta: false },
-    { id: "PaoFrances", nome: "Pão Francês", categoria: "Mercearia", preco: 4.99, icone: '<img src="https://images.unsplash.com/photo-1604908177520-1f3c5b8f9d4e?auto=format&fit=crop&w=600&q=80" alt="Pão Francês">', oferta: false },
-    { id: "LeiteIntegral", nome: "Leite Integral", categoria: "Laticínios", preco: 4.49, icone: '<img src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&w=600&q=80" alt="Leite Integral">', oferta: false },
-    { id: "paodequeijo", nome: "Pão de Queijo", categoria: "Laticínios", preco: 7.99, icone: '<img src="https://images.unsplash.com/photo-1604908177520-1f3c5b8f9d4e?auto=format&fit=crop&w=600&q=80" alt="Pão de Queijo">', oferta: false },
-    { id: "QueijoPrato", nome: "Queijo Prato", categoria: "Laticínios", preco: 19.99, icone: '<img src="https://images.unsplash.com/photo-1604908177520-1f3c5b8f9d4e?auto=format&fit=crop&w=600&q=80" alt="Queijo Prato">', oferta: false },
-    { id: "IogurteNatural", nome: "Iogurte Natural", categoria: "Laticínios", preco: 3.49, icone: '<img src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&w=600&q=80" alt="Iogurte Natural">', oferta: false }
+    { id: "PaoDeForma", nome: "Pão de Forma", categoria: "Mercearia", preco: 6.99, icone: '<img src="https://cdn.awsli.com.br/600x700/2738/2738802/produto/285843036/forma-tradidional-1-3cdu1vu0sr.png" alt="Pão de Forma">', oferta: false },
+    { id: "PaoDequeijo", nome: "Pão de Queijo", categoria: "Laticínios", preco: 7.99, icone: '<img src="https://static.itdg.com.br/images/640-400/dfc5a3f918dc30f32747b44cd3a18712/pao-de-queijo-facil-e-delicioso-3-.jpg" alt="Pão de Queijo">', oferta: false },
+    { id: "PaoFrances", nome: "Pão Francês", categoria: "Mercearia", preco: 4.99, icone: '<img src="https://www.redchameleon.com.br/storage/images/cache/forno-turbo-pao-de-sal-crocante-1280-fb6adcfa.jpg" alt="Pão Francês">', oferta: false },
+    { id: "LeiteIntegral", nome: "Leite Integral", categoria: "Laticínios", preco: 4.49, icone: '<img src="https://assets.ibecom.com.br/ib.item.image.large/l-c54acdc6d1da4f50a37252efe847bbd7.jpeg" alt="Leite Integral">', oferta: false },
+    { id: "QueijoPrato", nome: "Queijo Prato", categoria: "Laticínios", preco: 19.99, icone: '<img src="https://images.tcdn.com.br/img/img_prod/1049139/queijo_prato_fatiado_150g_d_or_603_1_d9a6770e63d8bc4319f8a61771adfb1d.jpg" alt="Queijo Prato">', oferta: false },
+    { id: "presunto", nome: "Presunto", categoria: "Laticínios", preco: 3.49, icone: '<img src="https://vitat.com.br/wp-content/uploads/2023/04/tipos-de-presunto-scaled.jpg" alt="Presunto">', oferta: false }
 ];
 
 const ofertasDaSemana = [
@@ -38,22 +37,18 @@ const ofertasDaSemana = [
         { nome: "Rúcula", categoria: "Verduras", preco: 3.19, precoAntigo: 4.29, imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVMQZpgBDno8Qke8hZVkLngyUg1uH_5WOpsLsdyAG4wQ&s=10", desconto: "-25%" }
     ],
     [
-        { nome: "paodequeijo", categoria: "Laticínios", preco: 7.99, imagem: "https://images.unsplash.com/photo-1604908177520-1f3c5b8f9d4e?auto=format&fit=crop&w=600&q=80", desconto: "-20%" },
-        { nome: "Queijo Prato", categoria: "Laticínios", preco: 19.99, imagem: "https://images.unsplash.com/photo-1604908177520-1f3c5b8f9d4e?auto=format&fit=crop&w=600&q=80", desconto: "-22%" },
-        { nome: "Iogurte Natural", categoria: "Laticínios", preco: 3.49, imagem: "https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&w=600&q=80", desconto: "-25%" },
-        { nome: "Leite Integral", categoria: "Laticínios", preco: 4.49, imagem: "https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&w=600&q=80", desconto: "-23%" },
+        {nome: "pao de queijo", categoria: "Laticínios", preco: 7.99, imagem: "https://static.itdg.com.br/images/640-400/dfc5a3f918dc30f32747b44cd3a18712/pao-de-queijo-facil-e-delicioso-3-.jpg", desconto: "-22%"},
+        { nome: "Queijo Prato", categoria: "Laticínios", preco: 19.99, imagem: "https://images.tcdn.com.br/img/img_prod/1049139/queijo_prato_fatiado_150g_d_or_603_1_d9a6770e63d8bc4319f8a61771adfb1d.jpg", desconto: "-22%" },
+        { nome: "Presunto", categoria: "Laticínios", preco: 3.49, imagem: "https://vitat.com.br/wp-content/uploads/2023/04/tipos-de-presunto-scaled.jpg", desconto: "-25%" },
+        { nome: "Leite Integral", categoria: "Laticínios", preco: 4.49, imagem: "https://assets.ibecom.com.br/ib.item.image.large/l-c54acdc6d1da4f50a37252efe847bbd7.jpeg", desconto: "-23%" },
 
     ],
     [
-        {nome: "Pão de Forma", categoria: "Mercearia", preco: 6.99, imagem: "https://images.unsplash.com/photo-1604908177520-1f3c5b8f9d4e?auto=format&fit=crop&w=600&q=80", desconto: "-20%"},
-        {nome: "Pão de Sal", categoria: "Mercearia", preco: 5.49, imagem: "https://images.unsplash.com/photo-1604908177520-1f3c5b8f9d4e?auto=format&fit=crop&w=600&q=80", desconto: "-22%"},
-        {nome: "Pão Francês", categoria: "Mercearia", preco: 4.99, imagem: "https://images.unsplash.com/photo-1604908177520-1f3c5b8f9d4e?auto=format&fit=crop&w=600&q=80", desconto: "-25%"},
-        {nome: "Baguete", categoria: "Mercearia", preco: 7.49, imagem: "https://images.unsplash.com/photo-1604908177520-1f3c5b8f9d4e?auto=format&fit=crop&w=600&q=80", desconto: "-23%"},
-    ],
+        {nome: "Pão de Forma", categoria: "Mercearia", preco: 6.99, imagem: "https://cdn.awsli.com.br/600x700/2738/2738802/produto/285843036/forma-tradidional-1-3cdu1vu0sr.png", desconto: "-20%"},
+        {nome: "Pão Francês", categoria: "Mercearia", preco: 4.99, imagem: "https://www.redchameleon.com.br/storage/images/cache/forno-turbo-pao-de-sal-crocante-1280-fb6adcfa.jpg", desconto: "-25%"},
 
-
+ ],
 ];
-
 let carrinho = [];
 let categoriaAtual = "Todos";
 let indexCarousel = 0;
