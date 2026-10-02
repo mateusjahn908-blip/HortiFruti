@@ -10,8 +10,8 @@
 </head>
 
 <body>
-
-    <!-- CABEÇALHO -->
+    <!-Nao mexer o codigo abaixo, apenas o resto, analisar e arrumar->
+    <CABEÇALHO>
     <header class="header">
 
         <div class="container header-content">
@@ -22,11 +22,7 @@
 
             <div class="search-box">
 
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Busque por produtos..."
-                >
+                <input type="text" id="searchInput" placeholder="Busque por produtos...">
 
                 <button id="searchButton">
                     🔍
@@ -49,7 +45,6 @@
     </header>
 
 
-    <!-- BANNER PRINCIPAL -->
     <section class="hero">
 
         <div class="container hero-content">
@@ -61,42 +56,38 @@
                 </span>
 
                 <h1>
-                    Ofertas que deixam
-                    <span>seu dia mais leve.</span>
+                    Ofertas da semana
+                    <span>que deixam seu dia mais leve.</span>
                 </h1>
 
                 <p>
-                    Produtos selecionados, preços especiais
-                    e tudo o que você precisa para sua casa.
+                    Selecionamos os melhores itens de hortifruti com descontos especiais
+                    para renovar sua casa com sabor, saúde e economia.
                 </p>
 
-                <a href="#ofertas" class="main-button">
-                    Ver ofertas
-                </a>
+                <div class="hero-actions">
+                    <a href="#ofertas" class="main-button">
+                        Ver ofertas
+                    </a>
+
+                    <div class="carousel-buttons" aria-label="Navegação do carrossel">
+                        <button class="carousel-button prev" id="prevSlide" type="button" aria-label="Slide anterior">←</button>
+                        <button class="carousel-button next" id="nextSlide" type="button" aria-label="Próximo slide">→</button>
+                    </div>
+                </div>
 
             </div>
 
-
-            <div class="offer-circle">
-
-                <small>OFERTAS</small>
-
-                <strong>
-                    DA SEMANA
-                </strong>
-
-                <span>
-                    até 30% OFF
-                </span>
-
+            <div class="hero-carousel" aria-live="polite">
+                <div class="carousel-track" id="heroCarousel"></div>
+                <div class="carousel-dots" id="heroDots"></div>
             </div>
 
         </div>
 
     </section>
 
-
-    <!-- OFERTAS -->
+    <OFERTAS>
     <section class="section" id="ofertas">
 
         <div class="container">
@@ -122,17 +113,14 @@
             </div>
 
 
-            <div
-                class="products-grid"
-                id="offersGrid"
-            ></div>
+            <div class="products-grid" id="offersGrid"></div>
 
         </div>
 
     </section>
 
 
-    <!-- CATÁLOGO -->
+    <Catalogo>
     <section class="catalog">
 
         <div class="container">
@@ -154,7 +142,7 @@
             </div>
 
 
-            <!-- FILTROS -->
+            <FILTROS>
             <div class="filters">
 
                 <button
@@ -198,6 +186,12 @@
                 >
                     Bebidas
                 </button>
+                <button
+                    class="filter"
+                    data-category="Laticínios"
+                >
+                    Laticínios
+                </button>
 
             </div>
 
@@ -220,7 +214,7 @@
     </section>
 
 
-    <!-- MENSAGEM -->
+    <MENSAGEM>
     <div
         class="toast"
         id="toast"
