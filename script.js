@@ -191,7 +191,10 @@ const atualizarCarrinho = () => {
     } else {
         elementos.itensCarrinho.innerHTML = carrinho.map(item => `
       <div class="cart-line">
-        <span>${item.quantidade}x ${item.nome}</span>
+        <div class="cart-product">
+          <span>${item.quantidade}x ${item.nome}</span>
+          <button class="remove-item" data-id="${item.id}" type="button" aria-label="Remover ${item.nome}">Remover</button>
+        </div>
         <strong>${formatarPreco(item.preco * item.quantidade)}</strong>
       </div>
     `).join("");
@@ -201,6 +204,29 @@ const atualizarCarrinho = () => {
     elementos.totalCarrinho.textContent = formatarPreco(total);
 };
 
+const removerDoCarrinho = id => {
+    const item = carrinho.find(produto => produto.id === id);
+    if (!item) return;
+
+    if (item.quantidade > 1) {
+        item.quantidade -= 1;
+        mostrarToast(`${item.nome} removido do carrinho.`);
+    } else {
+        carrinho = carrinho.filter(produto => produto.id !== id);
+        mostrarToast(`${item.nome} removido do carrinho.`);
+    }
+
+    atualizarCarrinho();
+};
+
+const limparCarrinho = () => {
+    if (!carrinho.length) return;
+
+    carrinho = [];
+    atualizarCarrinho();
+    mostrarToast("Carrinho limpo!");
+};
+
 const mostrarToast = mensagem => {
     elementos.toast.textContent = mensagem;
     elementos.toast.classList.add("show");
@@ -208,21 +234,64 @@ const mostrarToast = mensagem => {
     mostrarToast.timer = setTimeout(() => elementos.toast.classList.remove("show"), 1800);
 };
 
+const menuToggle = document.getElementById("menuToggle");
+const sideMenu = document.getElementById("sideMenu");
+
+const alternarMenu = () => {
+    if (!menuToggle || !sideMenu) return;
+    const aberto = sideMenu.classList.toggle("open");
+    menuToggle.classList.toggle("active", aberto);
+    menuToggle.setAttribute("aria-expanded", String(aberto));
+};
+
+if (menuToggle) {
+    menuToggle.addEventListener("click", alternarMenu);
+}
+
+if (sideMenu) {
+    sideMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            sideMenu.classList.remove("open");
+            menuToggle.classList.remove("active");
+            menuToggle.setAttribute("aria-expanded", "false");
+        });
+    });
+}
+
 document.addEventListener("click", event => {
     const botaoAdicionar = event.target.closest(".add-button");
     if (botaoAdicionar) {
         return adicionarAoCarrinho(botaoAdicionar.dataset.id);
     }
 
-    const filtro = event.target.closest(".filter");
-    if (!filtro) return;
+    const botaoRemover = event.target.closest(".remove-item");
+    if (botaoRemover) {
+        removerDoCarrinho(botaoRemover.dataset.id);
+        return;
+    }
 
-    document.querySelectorAll(".filter").forEach(botao => {
-        botao.classList.toggle("active", botao === filtro);
-    });
+    const botaoLimpar = event.target.closest("#clearCart");
+    if (botaoLimpar) {
+        limparCarrinho();
+        return;
+    }
 
-    categoriaAtual = filtro.dataset.category;
-    renderizarCatalogo();
+    if (event.target.closest(".filter")) {
+        const filtro = event.target.closest(".filter");
+        document.querySelectorAll(".filter").forEach(botao => {
+            botao.classList.toggle("active", botao === filtro);
+        });
+
+        categoriaAtual = filtro.dataset.category;
+        renderizarCatalogo();
+        return;
+    }
+
+    if (!event.target.closest("#menuToggle") && !event.target.closest("#sideMenu")) {
+        sideMenu?.classList.remove("open");
+        menuToggle?.classList.remove("active");
+        menuToggle?.setAttribute("aria-expanded", "false");
+    }
 });
 
 elementos.busca.addEventListener("input", renderizarCatalogo);

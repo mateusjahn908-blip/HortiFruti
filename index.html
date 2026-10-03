@@ -10,6 +10,19 @@
 </head>
 
 <body>
+    <button class="menu-summary" id="menuToggle" aria-label="Abrir menu de navegação" aria-expanded="false" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="side-menu" id="sideMenu" aria-label="Menu de navegação">
+        <a href="#sobre">Quem somos</a>
+        <a href="#produtos">Produtos</a>
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20os%20produtos%20do%20Hortifruti." target="_blank" rel="noreferrer">WhatsApp</a>
+        <a href="#endereco">Endereço</a>
+    </nav>
+
     <!-Nao mexer o codigo abaixo, apenas o resto, analisar e arrumar->
     <CABEÇALHO>
     <header class="header">
@@ -121,7 +134,7 @@
 
 
     <Catalogo>
-    <section class="catalog">
+    <section class="catalog" id="produtos">
 
         <div class="container">
 
@@ -214,6 +227,77 @@
     </section>
 
 
+    <section class="footer-info" id="sobre">
+        <div class="container footer-info-grid">
+            <div class="about-text">
+                <span class="section-label">QUEM SOMOS</span>
+                <h2>Um hortifruti com sabor de família e qualidade de verdade.</h2>
+                <p>
+                    Somos uma equipe apaixonada por oferecer frutas, verduras, legumes e produtos frescos
+                    com cuidado, higiene e atenção em cada escolha. Trabalhamos para levar até você o melhor
+                    do campo com preço justo e atendimento acolhedor.
+                </p>
+                <p>
+                    Nossa missão é tornar a compra do dia a dia mais saudável, prática e agradável, sempre mantendo
+                    o frescor e a confiança que fazem a diferença na sua mesa.
+                </p>
+            </div>
+
+            <div class="about-card">
+                <h3>Por que escolher a gente?</h3>
+                <ul>
+                    <li>Produtos frescos todos os dias</li>
+                    <li>Preços com atenção ao bolso</li>
+                    <li>Seleção cuidadosa e qualidade</li>
+                    <li>Atendimento rápido e humano</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-whatsapp" id="whatsapp">
+        <div class="container cta-whatsapp-content">
+            <div>
+                <span class="section-label">Fale com a gente</span>
+                <h2>Quer saber mais sobre nossos produtos?</h2>
+            </div>
+            <a class="main-button" href="https://wa.me/5541987131976?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20mais%20os%20produtos%20do%20Hortifruti." target="_blank" rel="noreferrer">
+                Falar no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <section class="location-section" id="endereco">
+        <div class="container location-grid">
+            <div class="location-info">
+                <span class="section-label">ONDE ESTAMOS</span>
+                <h2>Venha conhecer o Hortifruti</h2>
+                <p>
+                    Estamos na região central, com fácil acesso para quem quer comprar frescos com praticidade,
+                    qualidade e atendimento pessoal.
+                </p>
+
+                <div class="location-address">
+                    <strong>Hortifruti da Praça</strong>
+                    <span>Bacacheri, 67</span>
+                    <span>Curitiba - PR</span>
+                    <a href="https://www.google.com/maps/place/Av.+N.+Sra.+da+Luz,+170+-+Apto+67+-+Bacacheri,+Curitiba+-+PR,+82510-020/@-25.4057125,-49.2444811,17z/data=!3m1!4b1!4m6!3m5!1s0x94dce5e7571f6ccb:0x8a6184f7176bcdf7!8m2!3d-25.4057125!4d-49.2444811!16s%2Fg%2F11l5dckxtz?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer">
+                        Ver no mapa
+                    </a>
+                </div>
+            </div>
+
+            <div class="map-card">
+                <iframe
+                    src="https://www.google.com/maps?q=-25.4057125,-49.2444811&z=17&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Mapa do Hortifruti">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
     <MENSAGEM>
     <div
         class="toast"
@@ -259,6 +343,10 @@
                 </strong>
 
             </div>
+
+            <button id="clearCart" class="clear-cart" type="button">
+                Remover tudo
+            </button>
 
             <button class="main-button checkout">
                 Continuar
