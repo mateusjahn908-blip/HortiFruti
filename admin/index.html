@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Painel | Hortifruti</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<main class="login-screen" id="loginView" hidden>
+    <form class="login-card" id="loginForm" autocomplete="on">
+        <a class="logo" href="/">Horti<span>fruti</span></a>
+        <h1>Painel da loja</h1>
+        <p class="muted">Entre para cuidar dos produtos, das promoções e do estoque.</p>
+
+        <label for="loginUsuario">Usuário</label>
+        <input id="loginUsuario" name="username" autocomplete="username" required autofocus>
+
+        <label for="loginSenha">Senha</label>
+        <input id="loginSenha" name="password" type="password" autocomplete="current-password" required>
+
+        <p class="form-error" id="loginErro" role="alert" hidden></p>
+        <button class="btn primary block" type="submit" id="loginBtn">Entrar</button>
+        <a class="back-link" href="/">Voltar para o site</a>
+    </form>
+</main>
+
+<!-- PAINEL -->
+<div id="appView" hidden>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="logo" href="/admin/">Horti<span>fruti</span> <small>Painel</small></a>
+            <div class="topbar-actions">
+                <a class="btn ghost" href="/" target="_blank" rel="noopener">Ver site</a>
+                <button class="btn ghost" id="btnSenha" type="button">Trocar senha</button>
+                <button class="btn ghost" id="btnSair" type="button">Sair<span class="who" id="quem"></span></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="stats" id="stats" aria-label="Resumo"></section>
+
+        <nav class="tabs" role="tablist" aria-label="Seções do painel">
+            <button class="tab active" role="tab" data-tab="produtos" aria-selected="true">Produtos</button>
+            <button class="tab" role="tab" data-tab="promocoes" aria-selected="false">Promoções da semana</button>
+            <button class="tab" role="tab" data-tab="estoque" aria-selected="false">Estoque</button>
+        </nav>
+
+        <!-- PRODUTOS -->
+        <section class="panel" id="tab-produtos">
+            <div class="toolbar">
+                <input type="search" id="pBusca" placeholder="Buscar produto..." aria-label="Buscar produto">
+                <select id="pCategoria" aria-label="Categoria"></select>
+                <select id="pStatus" aria-label="Situação">
+                    <option value="">Todos</option>
+                    <option value="ativo">Visíveis no site</option>
+                    <option value="inativo">Ocultos</option>
+                </select>
+                <button class="btn primary" id="btnNovo" type="button">Novo produto</button>
+            </div>
+            <div class="table-wrap"><table class="grid" id="tabelaProdutos"></table></div>
+        </section>
+
+        <!-- PROMOÇÕES -->
+        <section class="panel" id="tab-promocoes" hidden>
+            <div class="promo-layout">
+                <form class="card" id="promoForm">
+                    <h2 id="promoTitulo">Colocar produto em promoção</h2>
+                    <label for="promoProduto">Produto</label>
+                    <select id="promoProduto" required></select>
+
+                    <div class="row-2">
+                        <div>
+                            <label for="promoPreco">Preço promocional (R$)</label>
+                            <input id="promoPreco" inputmode="decimal" placeholder="0,00" required>
+                        </div>
+                        <div>
+                            <label for="promoPct">ou desconto (%)</label>
+                            <input id="promoPct" inputmode="numeric" placeholder="0">
+                        </div>
+                    </div>
+
+                    <label for="promoAte">Vale até</label>
+                    <input id="promoAte" type="date">
+                    <p class="hint" id="promoPrevia">Escolha um produto para ver como fica.</p>
+
+                    <p class="form-error" id="promoErro" role="alert" hidden></p>
+                    <div class="actions">
+                        <button class="btn primary" type="submit" id="promoSalvar">Colocar em promoção</button>
+                        <button class="btn ghost" type="button" id="promoCancelar" hidden>Cancelar edição</button>
+                    </div>
+                </form>
+
+                <div>
+                    <div class="list-head">
+                        <h2>Promoções no site</h2>
+                        <button class="btn danger-ghost" id="btnEncerrarTodas" type="button">Encerrar todas</button>
+                    </div>
+                    <div id="listaPromos" class="promo-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTOQUE -->
+        <section class="panel" id="tab-estoque" hidden>
+            <div class="toolbar">
+                <input type="search" id="eBusca" placeholder="Buscar produto..." aria-label="Buscar produto">
+                <div class="chips" id="eFiltro" role="group" aria-label="Filtrar estoque">
+                    <button class="chip active" data-f="todos" type="button">Todos</button>
+                    <button class="chip" data-f="baixo" type="button">Estoque baixo</button>
+                    <button class="chip" data-f="zerado" type="button">Esgotados</button>
+                </div>
+            </div>
+            <div class="stock-layout">
+                <div class="table-wrap"><table class="grid" id="tabelaEstoque"></table></div>
+                <aside class="card">
+                    <h2>Últimas movimentações</h2>
+                    <ul class="history" id="historico"></ul>
+                </aside>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- MODAIS -->
+<dialog id="dlgProduto">
+    <form method="dialog" id="formProduto" class="dlg">
+        <h2 id="dlgProdutoTitulo">Novo produto</h2>
+        <label for="fNome">Nome</label>
+        <input id="fNome" maxlength="80" required>
+
+        <div class="row-2">
+            <div><label for="fCategoria">Categoria</label><select id="fCategoria" required></select></div>
+            <div><label for="fUnidade">Vendido por</label><select id="fUnidade" required></select></div>
+        </div>
+
+        <div class="row-3">
+            <div><label for="fPreco">Preço (R$)</label><input id="fPreco" inputmode="decimal" placeholder="0,00" required></div>
+            <div id="fEstoqueBox"><label for="fEstoque">Estoque inicial</label><input id="fEstoque" inputmode="numeric" value="0"></div>
+            <div><label for="fMinimo">Avisar abaixo de</label><input id="fMinimo" inputmode="numeric" value="5"></div>
+        </div>
+
+        <label for="fImagem">Imagem (link)</label>
+        <input id="fImagem" placeholder="https://...">
+        <div class="upload-row">
+            <label class="btn ghost small" for="fArquivo">Enviar do computador</label>
+            <input id="fArquivo" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+            <span class="hint" id="fArquivoMsg">JPG, PNG, WEBP ou GIF, até 2 MB.</span>
+        </div>
+        <div class="img-preview" id="fPreview" hidden><img alt="Prévia da imagem"></div>
+
+        <label class="check"><input type="checkbox" id="fAtivo" checked> Mostrar no site</label>
+
+        <p class="form-error" id="fErro" role="alert" hidden></p>
+        <div class="actions end">
+            <button class="btn ghost" type="button" data-fechar>Cancelar</button>
+            <button class="btn primary" type="submit" id="fSalvar">Salvar produto</button>
+        </div>
+    </form>
+</dialog>
+
+<dialog id="dlgEstoque">
+    <form method="dialog" id="formEstoque" class="dlg">
+        <h2 id="eTitulo">Movimentar estoque</h2>
+        <p class="muted" id="eAtual"></p>
+        <fieldset class="seg">
+            <legend class="sr">Tipo de movimento</legend>
+            <label><input type="radio" name="eTipo" value="entrada" checked><span>Entrada</span></label>
+            <label><input type="radio" name="eTipo" value="saida"><span>Saída</span></label>
+            <label><input type="radio" name="eTipo" value="ajuste"><span>Contagem</span></label>
+        </fieldset>
+        <label for="eQtd" id="eQtdLabel">Quantidade que chegou</label>
+        <input id="eQtd" inputmode="numeric" required>
+        <label for="eMotivo">Motivo (opcional)</label>
+        <input id="eMotivo" maxlength="200" placeholder="Ex.: compra do fornecedor, venda, perda">
+        <p class="hint" id="eResultado"></p>
+        <p class="form-error" id="eErro" role="alert" hidden></p>
+        <div class="actions end">
+            <button class="btn ghost" type="button" data-fechar>Cancelar</button>
+            <button class="btn primary" type="submit">Registrar</button>
+        </div>
+    </form>
+</dialog>
+
+<dialog id="dlgSenha">
+    <form method="dialog" id="formSenha" class="dlg">
+        <h2>Trocar senha</h2>
+        <label for="sAtual">Senha atual</label>
+        <input id="sAtual" type="password" autocomplete="current-password" required>
+        <label for="sNova">Nova senha (mínimo 8 caracteres)</label>
+        <input id="sNova" type="password" autocomplete="new-password" minlength="8" required>
+        <p class="form-error" id="sErro" role="alert" hidden></p>
+        <div class="actions end">
+            <button class="btn ghost" type="button" data-fechar>Cancelar</button>
+            <button class="btn primary" type="submit">Trocar senha</button>
+        </div>
+    </form>
+</dialog>
+
+<dialog id="dlgConfirma">
+    <form method="dialog" class="dlg">
+        <h2 id="cTitulo">Confirmar</h2>
+        <p id="cTexto"></p>
+        <div class="actions end">
+            <button class="btn ghost" value="nao">Cancelar</button>
+            <button class="btn danger" value="sim" id="cOk">Confirmar</button>
+        </div>
+    </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="admin.js"></script>
+</body>
+</html>

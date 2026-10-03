@@ -1,0 +1,22 @@
+{
+  "name": "hortifruti",
+  "version": "1.0.0",
+  "description": "Site do Hortifruti com painel administrativo (produtos, promoções e estoque)",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node --no-warnings server/server.js",
+    "dev": "node --no-warnings --watch server/server.js",
+    "test": "node --no-warnings server/test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1"
+  },
+  "optionalDependencies": {
+    "better-sqlite3": "^13.0.3"
+  }
+}

@@ -1,60 +1,24 @@
-const produtos = [
-    { id: "Banana30cm", nome: "Banana30cm", categoria: "Frutas", preco: 4.99, precoAntigo: 6.49, icone: '<img src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?auto=format&fit=crop&w=600&q=80" alt="Banana">', oferta: true },
-    { id: "MaçaGorda", nome: "MaçaGorda", categoria: "Frutas", preco: 3.99, precoAntigo: 5.49, icone: '<img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=600&q=80" alt="Maça">', oferta: true },
-    { id: "LaranjaAlaranjada", nome: "LaranjaAlaranjada", categoria: "Frutas", preco: 2.99, precoAntigo: 4.49, icone: '<img src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=600&q=80" alt="Laranja">', oferta: true },
-    { id: "TomateSuculento", nome: "TomateSuculento", categoria: "Legumes", preco: 5.99, precoAntigo: 7.49, icone: '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxxaOpMXDTRKj1Z0zZ_Y0pMGXmLR7tQ1YlPhUHEM6ISw&s=10" alt="Tomate">', oferta: true },
-    { id: "AlfaceVerde", nome: "AlfaceVerde", categoria: "Verduras", preco: 3.49, icone: '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3ZRWdTKY61SqP2EiduTm84qEMp3X_A63I1giu0BTRhA&s=10" alt="Alface">', oferta: false },
-    { id: "Morango", nome: "Morango", categoria: "Frutas", preco: 10.99, icone: '<img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=600&q=80" alt="Morango">', oferta: false },
-    { id: "Abacaxi", nome: "Abacaxi", categoria: "Frutas", preco: 12.99, icone: '<img src="https://www.estadao.com.br/resizer/v2/GEUVV5EDH5FUVEQJ6YYTV3JERA.jpeg?quality=80&auth=06f90ffbbfbc0d6a8ccc45f21a493500fce0cef5a6b0fe2a2d50dfc3d0226b1d&width=708&height=456&focal=2100,1390" alt="Abacaxi">', oferta: false },
-    { id: "Pimentao", nome: "Pimentão", categoria: "Legumes", preco: 7.49, icone: '<img src="https://s2.glbimg.com/DV0BJoVaIEax1qzAhCWwNWOk158=/620x466/smart/e.glbimg.com/og/ed/f/original/2021/04/14/como-plantar-pimentao-em-casa-getty-images-1.jpg" alt="Pimentão">', oferta: false },
-    { id: "Cenoura", nome: "Cenoura", categoria: "Legumes", preco: 5.99, icone: '<img src="https://images.unsplash.com/photo-1447175008436-054170c2e979?auto=format&fit=crop&w=600&q=80" alt="Cenoura">', oferta: false },
-    { id: "Limao", nome: "Limão", categoria: "Frutas", preco: 4.79, icone: '<img src="https://img.drogaraia.com.br/uploads/2024/04/adobestock_8188882_easy-resize-c.jpg" alt="Limão">', oferta: false },
-    { id: "PaoDeForma", nome: "Pão de Forma", categoria: "Mercearia", preco: 6.99, icone: '<img src="https://cdn.awsli.com.br/600x700/2738/2738802/produto/285843036/forma-tradidional-1-3cdu1vu0sr.png" alt="Pão de Forma">', oferta: false },
-    { id: "PaoDequeijo", nome: "Pão de Queijo", categoria: "Laticínios", preco: 7.99, icone: '<img src="https://static.itdg.com.br/images/640-400/dfc5a3f918dc30f32747b44cd3a18712/pao-de-queijo-facil-e-delicioso-3-.jpg" alt="Pão de Queijo">', oferta: false },
-    { id: "PaoFrances", nome: "Pão Francês", categoria: "Mercearia", preco: 4.99, icone: '<img src="https://www.redchameleon.com.br/storage/images/cache/forno-turbo-pao-de-sal-crocante-1280-fb6adcfa.jpg" alt="Pão Francês">', oferta: false },
-    { id: "LeiteIntegral", nome: "Leite Integral", categoria: "Laticínios", preco: 4.49, icone: '<img src="https://assets.ibecom.com.br/ib.item.image.large/l-c54acdc6d1da4f50a37252efe847bbd7.jpeg" alt="Leite Integral">', oferta: false },
-    { id: "QueijoPrato", nome: "Queijo Prato", categoria: "Laticínios", preco: 19.99, icone: '<img src="https://images.tcdn.com.br/img/img_prod/1049139/queijo_prato_fatiado_150g_d_or_603_1_d9a6770e63d8bc4319f8a61771adfb1d.jpg" alt="Queijo Prato">', oferta: false },
-    { id: "presunto", nome: "Presunto", categoria: "Laticínios", preco: 3.49, icone: '<img src="https://vitat.com.br/wp-content/uploads/2023/04/tipos-de-presunto-scaled.jpg" alt="Presunto">', oferta: false }
-];
+// Os produtos, preços, promoções e estoque vêm do painel admin (GET /api/produtos).
+const WHATSAPP = "5541987131976";
+const CHAVE_CARRINHO = "hortifruti_carrinho";
+const PRODUTOS_POR_SLIDE = 4;
+const OFERTAS_VISIVEIS = 4;
 
-const ofertasDaSemana = [
-    [
-        { nome: "Banana", categoria: "Frutas", preco: 4.99, precoAntigo: 6.49, imagem: "https://images.unsplash.com/photo-1587132137056-bfbf0166836e?auto=format&fit=crop&w=600&q=80", desconto: "-23%" },
-        { nome: "Tomate", categoria: "Legumes", preco: 5.99, precoAntigo: 7.49, imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxxaOpMXDTRKj1Z0zZ_Y0pMGXmLR7tQ1YlPhUHEM6ISw&s=10", desconto: "-20%" },
-        { nome: "Maçã", categoria: "Frutas", preco: 3.99, precoAntigo: 5.49, imagem: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=600&q=80", desconto: "-27%" },
-        { nome: "Alface", categoria: "Verduras", preco: 3.49, imagem: "https://images.unsplash.com/photo-1582515073490-399813c1f8b6?auto=format&fit=crop&w=600&q=80", desconto: "-29%" }
-    ],
-    [
-        { nome: "Morango", categoria: "Frutas", preco: 8.99, imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGGDTikXHUyYImtbzBwlaW7Xu3W-gWOs4Vaar31DH2BA&s=10", desconto: "-22%" },
-        { nome: "Pimentão", categoria: "Legumes", preco: 5.79, imagem: "https://s2.glbimg.com/DV0BJoVaIEax1qzAhCWwNWOk158=/620x466/smart/e.glbimg.com/og/ed/f/original/2021/04/14/como-plantar-pimentao-em-casa-getty-images-1.jpg", desconto: "-26%" },
-        { nome: "Abacaxi", categoria: "Frutas", preco: 9.99, imagem: "https://www.estadao.com.br/resizer/v2/GEUVV5EDH5FUVEQJ6YYTV3JERA.jpeg?quality=80&auth=06f90ffbbfbc0d6a8ccc45f21a493500fce0cef5a6b0fe2a2d50dfc3d0226b1d&width=708&height=456&focal=2100,1390", desconto: "-25%" },
-        { nome: "Cenoura", categoria: "Legumes", preco: 4.49, imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTY6o1Bl8mStaVEB7vPe2QyoJR_ohiCFNn9TXWwZfZDA&s=10", desconto: "-27%" }
-    ],
-    [
-        { nome: "Limão", categoria: "Frutas", preco: 3.79, imagem: "https://img.drogaraia.com.br/uploads/2024/04/adobestock_8188882_easy-resize-c.jpg", desconto: "-26%" },
-        { nome: "Ervilha", categoria: "Legumes", preco: 4.89, precoAntigo: 6.19, imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ZBlaXW3ltuaIrXTICxLyV5LC8Igdrup2mBFPOKmiFw&s=10", desconto: "-21%" },
-        { nome: "Manga", categoria: "Frutas", preco: 5.99, precoAntigo: 7.49, imagem: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=600&q=80", desconto: "-20%" },
-        { nome: "Rúcula", categoria: "Verduras", preco: 3.19, precoAntigo: 4.29, imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVMQZpgBDno8Qke8hZVkLngyUg1uH_5WOpsLsdyAG4wQ&s=10", desconto: "-25%" }
-    ],
-    [
-        {nome: "pao de queijo", categoria: "Laticínios", preco: 7.99, imagem: "https://static.itdg.com.br/images/640-400/dfc5a3f918dc30f32747b44cd3a18712/pao-de-queijo-facil-e-delicioso-3-.jpg", desconto: "-22%"},
-        { nome: "Queijo Prato", categoria: "Laticínios", preco: 19.99, imagem: "https://images.tcdn.com.br/img/img_prod/1049139/queijo_prato_fatiado_150g_d_or_603_1_d9a6770e63d8bc4319f8a61771adfb1d.jpg", desconto: "-22%" },
-        { nome: "Presunto", categoria: "Laticínios", preco: 3.49, imagem: "https://vitat.com.br/wp-content/uploads/2023/04/tipos-de-presunto-scaled.jpg", desconto: "-25%" },
-        { nome: "Leite Integral", categoria: "Laticínios", preco: 4.49, imagem: "https://assets.ibecom.com.br/ib.item.image.large/l-c54acdc6d1da4f50a37252efe847bbd7.jpeg", desconto: "-23%" },
-
-    ],
-    [
-        {nome: "Pão de Forma", categoria: "Mercearia", preco: 6.99, imagem: "https://cdn.awsli.com.br/600x700/2738/2738802/produto/285843036/forma-tradidional-1-3cdu1vu0sr.png", desconto: "-20%"},
-        {nome: "Pão Francês", categoria: "Mercearia", preco: 4.99, imagem: "https://www.redchameleon.com.br/storage/images/cache/forno-turbo-pao-de-sal-crocante-1280-fb6adcfa.jpg", desconto: "-25%"},
-
- ],
-];
-let carrinho = [];
-let categoriaAtual = "Todos";
-let indexCarousel = 0;
+const estado = {
+    produtos: [],
+    carrinho: [],          // [{ id, quantidade }] — nome/preço sempre vêm do produto atual
+    categoria: "Todos",
+    slide: 0,
+    totalSlides: 0,
+    verTodasOfertas: false,
+    autoplay: null
+};
 
 const elementos = {
     ofertas: document.getElementById("offersGrid"),
+    secaoOfertas: document.getElementById("ofertas"),
+    infoOfertas: document.getElementById("offersInfo"),
+    verTodas: document.getElementById("verTodasOfertas"),
     catalogo: document.getElementById("catalogGrid"),
     busca: document.getElementById("searchInput"),
     mensagemVazia: document.getElementById("emptyMessage"),
@@ -69,264 +33,413 @@ const elementos = {
     nextSlide: document.getElementById("nextSlide")
 };
 
-const formatarPreco = valor => valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+/* ---------- utilidades ---------- */
+const esc = valor => String(valor ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const formatarPreco = valor => Number(valor || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const formatarData = iso => (iso ? iso.split("-").reverse().slice(0, 2).join("/") : "");
+const semAcento = texto => texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const montarCardProduto = produto => `
-  <article class="product">
-    ${produto.oferta ? '<span class="product-badge">OFERTA</span>' : ""}
-    <div class="product-image">${produto.icone}</div>
-    <p class="product-category">${produto.categoria}</p>
-    <h3>${produto.nome}</h3>
-    ${produto.precoAntigo ? `<div class="old-price">${formatarPreco(produto.precoAntigo)}</div>` : '<div class="old-price">&nbsp;</div>'}
-    <div class="price">${formatarPreco(produto.preco)}</div>
-    <button class="add-button" data-id="${produto.id}">Adicionar</button>
-  </article>
-`;
+const ICONES = { Frutas: "🍎", Verduras: "🥬", Legumes: "🥕", Mercearia: "🍞", Bebidas: "🥤", "Laticínios": "🧀" };
 
-const semanaAtual = Math.floor(Date.now() / (1000 * 60 * 60 * 24 * 7)) % ofertasDaSemana.length;
-const ofertasAtuais = ofertasDaSemana[semanaAtual];
+const imagemProduto = (produto, classe = "") => produto.imagem
+    ? `<img src="${esc(produto.imagem)}" alt="${esc(produto.nome)}" loading="lazy" referrerpolicy="no-referrer" ${classe}>`
+    : `<span class="no-photo" aria-hidden="true">${ICONES[produto.categoria] || "🛒"}</span>`;
 
-const renderizarCarrosselHero = () => {
-    if (!elementos.heroCarousel || !elementos.heroDots) return;
-
-    const slides = ofertasDaSemana.map((grupo, grupoIndex) => `
-        <article class="hero-slide">
-            <div class="hero-slide-header">
-                <div>
-                    <span class="hero-slide-label">Ofertas da semana</span>
-                    <h3>Até 30% OFF</h3>
-                </div>
-                <span class="hero-slide-tag">Semana ${grupoIndex + 1}</span>
-            </div>
-
-            <div class="hero-slide-grid">
-                ${grupo.map(item => `
-                    <div class="hero-product-card">
-                        <div class="hero-product-image">
-                            <img src="${item.imagem}" alt="${item.nome}">
-                        </div>
-                        <div class="hero-product-content">
-                            <span class="hero-product-category">${item.categoria}</span>
-                            <strong>${item.nome}</strong>
-                            <div class="hero-product-prices">
-                                <span class="hero-product-old">${formatarPreco(item.precoAntigo)}</span>
-                                <span class="hero-product-price">${formatarPreco(item.preco)}</span>
-                            </div>
-                            <span class="hero-product-badge">${item.desconto}</span>
-                        </div>
-                    </div>
-                `).join("")}
-            </div>
-        </article>
-    `).join("");
-
-    elementos.heroCarousel.innerHTML = slides;
-    elementos.heroCarousel.style.transform = `translateX(-${indexCarousel * 100}%)`;
-    elementos.heroDots.innerHTML = ofertasDaSemana.map((_, i) => `
-        <button class="carousel-dot ${i === indexCarousel ? "active" : ""}" data-index="${i}" type="button" aria-label="Ir para o slide ${i + 1}"></button>
-    `).join("");
-};
-
-const avancarCarrosselHero = () => {
-    if (!elementos.heroCarousel || !elementos.heroDots) return;
-    indexCarousel = (indexCarousel + 1) % ofertasDaSemana.length;
-    renderizarCarrosselHero();
-};
-
-const retrocederCarrosselHero = () => {
-    if (!elementos.heroCarousel || !elementos.heroDots) return;
-    indexCarousel = (indexCarousel - 1 + ofertasDaSemana.length) % ofertasDaSemana.length;
-    renderizarCarrosselHero();
-};
-
-const iniciarCarrosselHero = () => {
-    if (!elementos.heroCarousel || !elementos.heroDots) return;
-    renderizarCarrosselHero();
-    setInterval(avancarCarrosselHero, 3500);
-};
-
-const renderizarOfertas = () => {
-    elementos.ofertas.innerHTML = produtos
-        .filter(produto => produto.oferta)
-        .slice(0, 4)
-        .map(montarCardProduto)
-        .join("");
-};
-
-const renderizarCatalogo = () => {
-    const termoBusca = elementos.busca.value.toLowerCase().trim();
-
-    const produtosFiltrados = produtos.filter(produto => {
-        const bateCategoria = categoriaAtual === "Todos" || produto.categoria === categoriaAtual;
-        const bateBusca = produto.nome.toLowerCase().includes(termoBusca);
-        return bateCategoria && bateBusca;
-    });
-
-    elementos.catalogo.innerHTML = produtosFiltrados.map(montarCardProduto).join("");
-    elementos.mensagemVazia.style.display = produtosFiltrados.length ? "none" : "block";
-};
-
-const adicionarAoCarrinho = id => {
-    const produto = produtos.find(item => item.id === id);
-    if (!produto) return;
-
-    const itemExistente = carrinho.find(item => item.id === id);
-
-    if (itemExistente) {
-        itemExistente.quantidade += 1;
-    } else {
-        carrinho.push({ ...produto, quantidade: 1 });
-    }
-
-    atualizarCarrinho();
-    mostrarToast(`${produto.nome} adicionado ao carrinho!`);
-};
-
-const atualizarCarrinho = () => {
-    const quantidadeTotal = carrinho.reduce((total, item) => total + item.quantidade, 0);
-    elementos.contadorCarrinho.textContent = quantidadeTotal;
-
-    if (!carrinho.length) {
-        elementos.itensCarrinho.innerHTML = '<p style="color:#777">Seu carrinho está vazio.</p>';
-    } else {
-        elementos.itensCarrinho.innerHTML = carrinho.map(item => `
-      <div class="cart-line">
-        <div class="cart-product">
-          <span>${item.quantidade}x ${item.nome}</span>
-          <button class="remove-item" data-id="${item.id}" type="button" aria-label="Remover ${item.nome}">Remover</button>
-        </div>
-        <strong>${formatarPreco(item.preco * item.quantidade)}</strong>
-      </div>
-    `).join("");
-    }
-
-    const total = carrinho.reduce((acumulador, item) => acumulador + item.preco * item.quantidade, 0);
-    elementos.totalCarrinho.textContent = formatarPreco(total);
-};
-
-const removerDoCarrinho = id => {
-    const item = carrinho.find(produto => produto.id === id);
-    if (!item) return;
-
-    if (item.quantidade > 1) {
-        item.quantidade -= 1;
-        mostrarToast(`${item.nome} removido do carrinho.`);
-    } else {
-        carrinho = carrinho.filter(produto => produto.id !== id);
-        mostrarToast(`${item.nome} removido do carrinho.`);
-    }
-
-    atualizarCarrinho();
-};
-
-const limparCarrinho = () => {
-    if (!carrinho.length) return;
-
-    carrinho = [];
-    atualizarCarrinho();
-    mostrarToast("Carrinho limpo!");
-};
+// Se uma foto não carregar (link quebrado), troca por um ícone em vez de mostrar imagem partida.
+document.addEventListener("error", evento => {
+    const img = evento.target;
+    if (!(img instanceof HTMLImageElement) || !img.closest(".product-image, .hero-product-image")) return;
+    const produto = estado.produtos.find(p => p.nome === img.alt);
+    img.replaceWith(Object.assign(document.createElement("span"), {
+        className: "no-photo", textContent: ICONES[produto?.categoria] || "🛒"
+    }));
+}, true);
 
 const mostrarToast = mensagem => {
     elementos.toast.textContent = mensagem;
     elementos.toast.classList.add("show");
     clearTimeout(mostrarToast.timer);
-    mostrarToast.timer = setTimeout(() => elementos.toast.classList.remove("show"), 1800);
+    mostrarToast.timer = setTimeout(() => elementos.toast.classList.remove("show"), 2200);
 };
 
+/* ---------- cartão de produto ---------- */
+const montarCardProduto = produto => {
+    const selo = !produto.disponivel
+        ? '<span class="product-badge out">Esgotado</span>'
+        : produto.emPromocao ? `<span class="product-badge">-${produto.desconto}%</span>` : "";
+
+    return `
+  <article class="product ${produto.disponivel ? "" : "is-out"}">
+    ${selo}
+    <div class="product-image">${imagemProduto(produto)}</div>
+    <p class="product-category">${esc(produto.categoria)}</p>
+    <h3>${esc(produto.nome)}</h3>
+    <div class="old-price">${produto.precoAntigo ? formatarPreco(produto.precoAntigo) : "&nbsp;"}</div>
+    <div class="price">${formatarPreco(produto.preco)} <small>/${esc(produto.unidade)}</small></div>
+    <p class="promo-until">${produto.emPromocao && produto.promoAte ? `Oferta até ${formatarData(produto.promoAte)}` : "&nbsp;"}</p>
+    <button class="add-button" data-id="${produto.id}" type="button" ${produto.disponivel ? "" : "disabled"}>${produto.disponivel ? "Adicionar" : "Indisponível"}</button>
+  </article>`;
+};
+
+const produtoPorId = id => estado.produtos.find(p => p.id === Number(id));
+const emOferta = () => estado.produtos.filter(p => p.emPromocao);
+
+/* ---------- carrossel do topo ---------- */
+const montarSlides = () => {
+    const promos = emOferta().filter(p => p.disponivel);
+    if (promos.length) {
+        const grupos = [];
+        for (let i = 0; i < promos.length; i += PRODUTOS_POR_SLIDE) grupos.push(promos.slice(i, i + PRODUTOS_POR_SLIDE));
+        const maior = Math.max(...promos.map(p => p.desconto));
+        return grupos.map((itens, i) => ({
+            rotulo: "Ofertas da semana", titulo: `Até ${maior}% OFF`, tag: `${i + 1}/${grupos.length}`, itens
+        }));
+    }
+    // sem promoções: mostra os produtos disponíveis
+    const disponiveis = estado.produtos.filter(p => p.disponivel).slice(0, PRODUTOS_POR_SLIDE * 2);
+    const grupos = [];
+    for (let i = 0; i < disponiveis.length; i += PRODUTOS_POR_SLIDE) grupos.push(disponiveis.slice(i, i + PRODUTOS_POR_SLIDE));
+    return grupos.map((itens, i) => ({
+        rotulo: "Fresquinhos de hoje", titulo: "Direto do campo", tag: grupos.length > 1 ? `${i + 1}/${grupos.length}` : "Novidades", itens
+    }));
+};
+
+const cardHero = item => `
+    <div class="hero-product-card">
+        <div class="hero-product-image">${imagemProduto(item)}</div>
+        <div class="hero-product-content">
+            <span class="hero-product-category">${esc(item.categoria)}</span>
+            <strong title="${esc(item.nome)}">${esc(item.nome)}</strong>
+            <div class="hero-product-prices">
+                ${item.precoAntigo ? `<span class="hero-product-old">${formatarPreco(item.precoAntigo)}</span>` : ""}
+                <span class="hero-product-price">${formatarPreco(item.preco)}<small>/${esc(item.unidade)}</small></span>
+            </div>
+            ${item.emPromocao ? `<span class="hero-product-badge">-${item.desconto}%</span>` : ""}
+        </div>
+    </div>`;
+
+const renderizarCarrosselHero = () => {
+    if (!elementos.heroCarousel || !elementos.heroDots) return;
+    const slides = montarSlides();
+    estado.totalSlides = slides.length;
+    estado.slide = Math.min(estado.slide, Math.max(slides.length - 1, 0));
+
+    document.querySelector(".hero-carousel").hidden = !slides.length;
+    document.querySelector(".carousel-buttons").hidden = slides.length < 2;
+
+    elementos.heroCarousel.innerHTML = slides.map((s, i) => `
+        <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="${i + 1} de ${slides.length}">
+            <div class="hero-slide-header">
+                <div>
+                    <span class="hero-slide-label">${esc(s.rotulo)}</span>
+                    <h3>${esc(s.titulo)}</h3>
+                </div>
+                <span class="hero-slide-tag">${esc(s.tag)}</span>
+            </div>
+            <div class="hero-slide-grid">${s.itens.map(cardHero).join("")}</div>
+        </article>`).join("");
+
+    elementos.heroDots.innerHTML = slides.length > 1 ? slides.map((_, i) => `
+        <button class="carousel-dot" data-index="${i}" type="button" aria-label="Ir para o slide ${i + 1}"></button>`).join("") : "";
+
+    irParaSlide(estado.slide, false);
+    iniciarAutoplay();
+};
+
+const irParaSlide = (indice, animar = true) => {
+    if (!estado.totalSlides) return;
+    estado.slide = (indice + estado.totalSlides) % estado.totalSlides;
+    elementos.heroCarousel.style.transition = animar && !reduzirMovimento ? "" : "none";
+    elementos.heroCarousel.style.transform = `translateX(-${estado.slide * 100}%)`;
+    elementos.heroDots.querySelectorAll(".carousel-dot").forEach((dot, i) => {
+        dot.classList.toggle("active", i === estado.slide);
+        dot.setAttribute("aria-current", i === estado.slide ? "true" : "false");
+    });
+};
+
+const iniciarAutoplay = () => {
+    clearInterval(estado.autoplay);
+    if (reduzirMovimento || estado.totalSlides < 2) return;
+    estado.autoplay = setInterval(() => { if (!document.hidden) irParaSlide(estado.slide + 1); }, 5000);
+};
+const pararAutoplay = () => clearInterval(estado.autoplay);
+
+const configurarCarrossel = () => {
+    const area = document.querySelector(".hero-carousel");
+    elementos.prevSlide?.addEventListener("click", () => { irParaSlide(estado.slide - 1); iniciarAutoplay(); });
+    elementos.nextSlide?.addEventListener("click", () => { irParaSlide(estado.slide + 1); iniciarAutoplay(); });
+    elementos.heroDots?.addEventListener("click", evento => {
+        const dot = evento.target.closest(".carousel-dot");
+        if (dot) { irParaSlide(Number(dot.dataset.index)); iniciarAutoplay(); }
+    });
+    area?.addEventListener("mouseenter", pararAutoplay);
+    area?.addEventListener("mouseleave", iniciarAutoplay);
+    area?.addEventListener("focusin", pararAutoplay);
+    area?.addEventListener("focusout", iniciarAutoplay);
+
+    // arrastar com o dedo (celular)
+    let inicioX = null;
+    area?.addEventListener("pointerdown", e => { inicioX = e.clientX; });
+    area?.addEventListener("pointerup", e => {
+        if (inicioX === null) return;
+        const dx = e.clientX - inicioX;
+        inicioX = null;
+        if (Math.abs(dx) > 40) { irParaSlide(estado.slide + (dx < 0 ? 1 : -1)); iniciarAutoplay(); }
+    });
+    area?.addEventListener("pointercancel", () => { inicioX = null; });
+};
+
+/* ---------- ofertas e catálogo ---------- */
+const renderizarOfertas = () => {
+    const ofertas = emOferta();
+    elementos.secaoOfertas.hidden = !ofertas.length;
+    const cta = document.querySelector('.hero .main-button');
+    if (cta) cta.setAttribute("href", ofertas.length ? "#ofertas" : "#produtos");
+    if (!ofertas.length) { elementos.ofertas.innerHTML = ""; return; }
+
+    const visiveis = estado.verTodasOfertas ? ofertas : ofertas.slice(0, OFERTAS_VISIVEIS);
+    elementos.ofertas.innerHTML = visiveis.map(montarCardProduto).join("");
+
+    const datas = ofertas.map(p => p.promoAte).filter(Boolean).sort();
+    elementos.infoOfertas.textContent = datas.length ? `Preços especiais até ${formatarData(datas[datas.length - 1])}, ou enquanto durar o estoque.` : "Preços especiais enquanto durar o estoque.";
+
+    elementos.verTodas.hidden = ofertas.length <= OFERTAS_VISIVEIS;
+    elementos.verTodas.textContent = estado.verTodasOfertas ? "Ver menos" : `Ver todas (${ofertas.length})`;
+    elementos.verTodas.setAttribute("aria-expanded", String(estado.verTodasOfertas));
+};
+
+const renderizarCatalogo = () => {
+    const termo = semAcento(elementos.busca.value.trim());
+    const filtrados = estado.produtos.filter(produto =>
+        (estado.categoria === "Todos" || produto.categoria === estado.categoria) &&
+        (!termo || semAcento(produto.nome).includes(termo)));
+
+    elementos.catalogo.innerHTML = filtrados.map(montarCardProduto).join("");
+    elementos.mensagemVazia.textContent = "Nenhum produto encontrado.";
+    elementos.mensagemVazia.style.display = filtrados.length ? "none" : "block";
+};
+
+const renderizarTudo = () => {
+    renderizarCarrosselHero();
+    renderizarOfertas();
+    renderizarCatalogo();
+    reconciliarCarrinho();
+};
+
+const mostrarErroCarregamento = () => {
+    elementos.catalogo.innerHTML = "";
+    elementos.mensagemVazia.innerHTML = 'Não foi possível carregar os produtos agora. <button class="outline-button" id="tentarDeNovo" type="button">Tentar de novo</button>';
+    elementos.mensagemVazia.style.display = "block";
+    elementos.secaoOfertas.hidden = true;
+    document.querySelector(".hero-carousel").hidden = true;
+    document.querySelector(".carousel-buttons").hidden = true;
+};
+
+const carregarProdutos = async () => {
+    const resposta = await fetch("/api/produtos", { cache: "no-store" });
+    if (!resposta.ok) throw new Error("falha ao carregar");
+    estado.produtos = (await resposta.json()).produtos;
+};
+
+/* ---------- carrinho ---------- */
+const salvarCarrinho = () => {
+    try { localStorage.setItem(CHAVE_CARRINHO, JSON.stringify(estado.carrinho)); } catch { /* navegação privada */ }
+};
+
+const carregarCarrinhoSalvo = () => {
+    try {
+        const salvo = JSON.parse(localStorage.getItem(CHAVE_CARRINHO) || "[]");
+        estado.carrinho = Array.isArray(salvo)
+            ? salvo.filter(i => Number.isInteger(i?.id) && Number.isInteger(i?.quantidade) && i.quantidade > 0)
+            : [];
+    } catch { estado.carrinho = []; }
+};
+
+// Ajusta o carrinho ao que existe agora (produto removido, esgotado ou com menos estoque).
+const reconciliarCarrinho = () => {
+    let ajustou = false;
+    estado.carrinho = estado.carrinho.flatMap(item => {
+        const produto = produtoPorId(item.id);
+        if (!produto || !produto.disponivel) { ajustou = true; return []; }
+        if (item.quantidade > produto.estoque) { ajustou = true; return [{ ...item, quantidade: produto.estoque }]; }
+        return [item];
+    });
+    salvarCarrinho();
+    atualizarCarrinho();
+    return ajustou;
+};
+
+const adicionarAoCarrinho = id => {
+    const produto = produtoPorId(id);
+    if (!produto || !produto.disponivel) return;
+    const item = estado.carrinho.find(i => i.id === produto.id);
+    if (item && item.quantidade >= produto.estoque) {
+        mostrarToast(`Só temos ${produto.estoque} de ${produto.nome} no momento.`);
+        return;
+    }
+    if (item) item.quantidade += 1; else estado.carrinho.push({ id: produto.id, quantidade: 1 });
+    salvarCarrinho();
+    atualizarCarrinho();
+    mostrarToast(`${produto.nome} adicionado ao carrinho!`);
+};
+
+const alterarQuantidade = (id, delta) => {
+    const item = estado.carrinho.find(i => i.id === Number(id));
+    const produto = produtoPorId(id);
+    if (!item || !produto) return;
+    if (delta > 0 && item.quantidade >= produto.estoque) { mostrarToast(`Só temos ${produto.estoque} de ${produto.nome} no momento.`); return; }
+    item.quantidade += delta;
+    if (item.quantidade <= 0) estado.carrinho = estado.carrinho.filter(i => i !== item);
+    salvarCarrinho();
+    atualizarCarrinho();
+};
+
+const removerDoCarrinho = id => {
+    const produto = produtoPorId(id);
+    estado.carrinho = estado.carrinho.filter(i => i.id !== Number(id));
+    salvarCarrinho();
+    atualizarCarrinho();
+    if (produto) mostrarToast(`${produto.nome} removido do carrinho.`);
+};
+
+const limparCarrinho = () => {
+    if (!estado.carrinho.length) return;
+    estado.carrinho = [];
+    salvarCarrinho();
+    atualizarCarrinho();
+    mostrarToast("Carrinho limpo!");
+};
+
+const linhasCarrinho = () => estado.carrinho.map(i => ({ ...i, produto: produtoPorId(i.id) })).filter(l => l.produto);
+
+const atualizarCarrinho = () => {
+    const linhas = linhasCarrinho();
+    elementos.contadorCarrinho.textContent = linhas.reduce((t, l) => t + l.quantidade, 0);
+
+    elementos.itensCarrinho.innerHTML = linhas.length ? linhas.map(({ produto, quantidade }) => `
+      <div class="cart-line">
+        <div class="cart-product">
+          <div>
+            <span>${esc(produto.nome)} <small>(${formatarPreco(produto.preco)}/${esc(produto.unidade)})</small></span>
+            <button class="remove-item" data-id="${produto.id}" type="button" aria-label="Remover ${esc(produto.nome)}">Remover</button>
+          </div>
+          <div class="qty" role="group" aria-label="Quantidade de ${esc(produto.nome)}">
+            <button type="button" data-qtd="-1" data-id="${produto.id}" aria-label="Diminuir">−</button>
+            <b>${quantidade}</b>
+            <button type="button" data-qtd="1" data-id="${produto.id}" aria-label="Aumentar">+</button>
+          </div>
+        </div>
+        <strong>${formatarPreco(produto.preco * quantidade)}</strong>
+      </div>`).join("") : '<p style="color:#777">Seu carrinho está vazio.</p>';
+
+    elementos.totalCarrinho.textContent = formatarPreco(linhas.reduce((t, l) => t + l.produto.preco * l.quantidade, 0));
+};
+
+// "Continuar": confere preço/estoque atuais e abre o pedido pronto no WhatsApp da loja.
+const finalizarPedido = async () => {
+    if (!estado.carrinho.length) { mostrarToast("Seu carrinho está vazio."); return; }
+    try { await carregarProdutos(); } catch { mostrarToast("Sem conexão. Tente de novo em instantes."); return; }
+    const ajustou = reconciliarCarrinho();
+    renderizarTudo();
+    if (ajustou) {
+        mostrarToast("Alguns itens mudaram de estoque. Confira o carrinho antes de continuar.");
+        return;
+    }
+    const linhas = linhasCarrinho();
+    const total = linhas.reduce((t, l) => t + l.produto.preco * l.quantidade, 0);
+    const texto = [
+        "Olá! Gostaria de fazer este pedido:", "",
+        ...linhas.map(({ produto, quantidade }) => `• ${quantidade}x ${produto.nome} (${produto.unidade}) — ${formatarPreco(produto.preco * quantidade)}`),
+        "", `Total: ${formatarPreco(total)}`
+    ].join("\n");
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`, "_blank", "noopener");
+};
+
+/* ---------- menu lateral ---------- */
 const menuToggle = document.getElementById("menuToggle");
 const sideMenu = document.getElementById("sideMenu");
 
-const alternarMenu = () => {
-    if (!menuToggle || !sideMenu) return;
+const fecharMenu = () => {
+    sideMenu?.classList.remove("open");
+    menuToggle?.classList.remove("active");
+    menuToggle?.setAttribute("aria-expanded", "false");
+};
+
+menuToggle?.addEventListener("click", () => {
     const aberto = sideMenu.classList.toggle("open");
     menuToggle.classList.toggle("active", aberto);
     menuToggle.setAttribute("aria-expanded", String(aberto));
-};
+});
+sideMenu?.querySelectorAll("a").forEach(link => link.addEventListener("click", fecharMenu));
 
-if (menuToggle) {
-    menuToggle.addEventListener("click", alternarMenu);
-}
+/* ---------- eventos ---------- */
+document.addEventListener("click", evento => {
+    const alvo = evento.target;
 
-if (sideMenu) {
-    sideMenu.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-            sideMenu.classList.remove("open");
-            menuToggle.classList.remove("active");
-            menuToggle.setAttribute("aria-expanded", "false");
-        });
-    });
-}
+    const adicionar = alvo.closest(".add-button");
+    if (adicionar) return adicionarAoCarrinho(adicionar.dataset.id);
 
-document.addEventListener("click", event => {
-    const botaoAdicionar = event.target.closest(".add-button");
-    if (botaoAdicionar) {
-        return adicionarAoCarrinho(botaoAdicionar.dataset.id);
+    const quantidade = alvo.closest("[data-qtd]");
+    if (quantidade) return alterarQuantidade(quantidade.dataset.id, Number(quantidade.dataset.qtd));
+
+    const remover = alvo.closest(".remove-item");
+    if (remover) return removerDoCarrinho(remover.dataset.id);
+
+    if (alvo.closest("#clearCart")) return limparCarrinho();
+    if (alvo.closest(".checkout")) return finalizarPedido();
+    if (alvo.closest("#tentarDeNovo")) return iniciar();
+
+    const filtro = alvo.closest(".filter");
+    if (filtro) {
+        document.querySelectorAll(".filter").forEach(b => b.classList.toggle("active", b === filtro));
+        estado.categoria = filtro.dataset.category;
+        return renderizarCatalogo();
     }
 
-    const botaoRemover = event.target.closest(".remove-item");
-    if (botaoRemover) {
-        removerDoCarrinho(botaoRemover.dataset.id);
-        return;
-    }
+    if (!alvo.closest("#menuToggle") && !alvo.closest("#sideMenu")) fecharMenu();
+});
 
-    const botaoLimpar = event.target.closest("#clearCart");
-    if (botaoLimpar) {
-        limparCarrinho();
-        return;
-    }
+document.addEventListener("keydown", evento => {
+    if (evento.key !== "Escape") return;
+    fecharMenu();
+    elementos.modalCarrinho.classList.remove("open");
+});
 
-    if (event.target.closest(".filter")) {
-        const filtro = event.target.closest(".filter");
-        document.querySelectorAll(".filter").forEach(botao => {
-            botao.classList.toggle("active", botao === filtro);
-        });
-
-        categoriaAtual = filtro.dataset.category;
-        renderizarCatalogo();
-        return;
-    }
-
-    if (!event.target.closest("#menuToggle") && !event.target.closest("#sideMenu")) {
-        sideMenu?.classList.remove("open");
-        menuToggle?.classList.remove("active");
-        menuToggle?.setAttribute("aria-expanded", "false");
-    }
+elementos.verTodas.addEventListener("click", () => {
+    estado.verTodasOfertas = !estado.verTodasOfertas;
+    renderizarOfertas();
 });
 
 elementos.busca.addEventListener("input", renderizarCatalogo);
-
 document.getElementById("searchButton").addEventListener("click", () => {
-    document.querySelector(".catalog").scrollIntoView({ behavior: "smooth" });
+    document.querySelector(".catalog").scrollIntoView({ behavior: reduzirMovimento ? "auto" : "smooth" });
     renderizarCatalogo();
-});
-
-if (elementos.prevSlide) {
-    elementos.prevSlide.addEventListener("click", retrocederCarrosselHero);
-}
-
-if (elementos.nextSlide) {
-    elementos.nextSlide.addEventListener("click", avancarCarrosselHero);
-}
-
-document.addEventListener("click", event => {
-    const dot = event.target.closest(".carousel-dot");
-    if (dot) {
-        indexCarousel = Number(dot.dataset.index);
-        renderizarCarrosselHero();
-    }
 });
 
 document.getElementById("cartButton").addEventListener("click", () => elementos.modalCarrinho.classList.add("open"));
 document.getElementById("closeModal").addEventListener("click", () => elementos.modalCarrinho.classList.remove("open"));
-
-elementos.modalCarrinho.addEventListener("click", event => {
-    if (event.target === elementos.modalCarrinho) {
-        elementos.modalCarrinho.classList.remove("open");
-    }
+elementos.modalCarrinho.addEventListener("click", evento => {
+    if (evento.target === elementos.modalCarrinho) elementos.modalCarrinho.classList.remove("open");
 });
 
-renderizarOfertas();
-renderizarCatalogo();
+// Ao voltar para a aba, atualiza preços e estoque (o admin pode ter mudado algo).
+document.addEventListener("visibilitychange", async () => {
+    if (document.hidden || !estado.produtos.length) return;
+    try { await carregarProdutos(); renderizarTudo(); } catch { /* mantém o que já está na tela */ }
+});
+
+/* ---------- início ---------- */
+async function iniciar() {
+    try {
+        await carregarProdutos();
+        renderizarTudo();
+    } catch {
+        mostrarErroCarregamento();
+    }
+}
+
+configurarCarrossel();
+carregarCarrinhoSalvo();
 atualizarCarrinho();
-iniciarCarrosselHero();
+iniciar();

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hortifruti da Praça: frutas, verduras e legumes fresquinhos com ofertas toda semana.">
 
     <title>Hortifruti | Ofertas</title>
 
@@ -19,12 +20,12 @@
     <nav class="side-menu" id="sideMenu" aria-label="Menu de navegação">
         <a href="#sobre">Quem somos</a>
         <a href="#produtos">Produtos</a>
-        <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20os%20produtos%20do%20Hortifruti." target="_blank" rel="noreferrer">WhatsApp</a>
+        <a href="https://wa.me/5541987131976?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20os%20produtos%20do%20Hortifruti." target="_blank" rel="noreferrer">WhatsApp</a>
         <a href="#endereco">Endereço</a>
     </nav>
 
-    <!-Nao mexer o codigo abaixo, apenas o resto, analisar e arrumar->
-    <CABEÇALHO>
+    <!-- Nao mexer o codigo abaixo, apenas o resto, analisar e arrumar -->
+    <!-- CABEÇALHO -->
     <header class="header">
 
         <div class="container header-content">
@@ -100,7 +101,7 @@
 
     </section>
 
-    <OFERTAS>
+    <!-- OFERTAS -->
     <section class="section" id="ofertas">
 
         <div class="container">
@@ -117,9 +118,11 @@
                         Ofertas da semana
                     </h2>
 
+                    <p class="section-sub" id="offersInfo"></p>
+
                 </div>
 
-                <button class="outline-button">
+                <button class="outline-button" id="verTodasOfertas" type="button" aria-expanded="false" hidden>
                     Ver todas
                 </button>
 
@@ -133,7 +136,7 @@
     </section>
 
 
-    <Catalogo>
+    <!-- Catalogo -->
     <section class="catalog" id="produtos">
 
         <div class="container">
@@ -155,7 +158,7 @@
             </div>
 
 
-            <FILTROS>
+            <!-- FILTROS -->
             <div class="filters">
 
                 <button
@@ -298,7 +301,7 @@
         </div>
     </section>
 
-    <MENSAGEM>
+    <!-- MENSAGEM -->
     <div
         class="toast"
         id="toast"
@@ -348,8 +351,12 @@
                 Remover tudo
             </button>
 
-            <button class="main-button checkout">
-                Continuar
+            <p class="cart-note">
+                O pedido é enviado pelo WhatsApp da loja, que confirma preços e disponibilidade.
+            </p>
+
+            <button class="main-button checkout" type="button">
+                Enviar pedido no WhatsApp
             </button>
 
         </div>
